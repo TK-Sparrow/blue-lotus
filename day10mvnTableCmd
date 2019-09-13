@@ -1,0 +1,12 @@
+create table virtusausers(username varchar(50) not null primary key,password varchar(60) not null,enabled number(1) not null);
+
+ 
+create table user_roles(username varchar(50) not null,role varchar(50) not null,constraint fk_user_roles foreign key(username) references virtusausers(username));
+ 
+  create unique index ix_auth_username on user_roles(username,role);
+  
+  
+  insert into virtusausers values('user2','$2a$10$XiaMsoNeyDLf8hzYINnvHOF0B.4Aber8eOxu1gLxgFPqWEZzpwso2',1);
+  
+  insert into user_roles values('user2','ROLE_USER');
+  
